@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>ARCHIVE RECOVERY SYSTEM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="housing">
+    <span class="bolt bolt-tl" aria-hidden="true"></span>
+    <span class="bolt bolt-tr" aria-hidden="true"></span>
+    <span class="bolt bolt-bl" aria-hidden="true"></span>
+    <span class="bolt bolt-br" aria-hidden="true"></span>
+
+    <div class="screen" id="screen">
+      <div class="corners" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <section id="standby" class="view view-standby">
+        <p class="unit-id">WARD ARCHIVE // UNIT HR-04</p>
+        <h1 class="standby-title">ARCHIVE RECOVERY TERMINAL</h1>
+        <p class="rule" aria-hidden="true"></p>
+        <p id="standby-status" class="standby-status is-alert">SYSTEM STANDBY</p>
+        <button type="button" id="init-button" class="hard-button">INITIALIZE SYSTEM</button>
+      </section>
+
+      <section id="mission" class="view view-mission" hidden>
+        <header class="chrome-top">
+          <div class="chrome-titles">
+            <h1 class="system-title">ARCHIVE RECOVERY SYSTEM</h1>
+            <p class="route-state">ASSIGNED SEARCH ROUTE</p>
+          </div>
+          <p class="online-status">
+            <span class="lamp" aria-hidden="true"></span>
+            <span>SYSTEM STATUS: ONLINE</span>
+          </p>
+        </header>
+
+        <div class="route-stage">
+          <div class="readout">
+            <p id="assign-flash" class="assign-flash" hidden>ROUTE ASSIGNED</p>
+            <div id="route" class="route"></div>
+          </div>
+          <p class="follow">FOLLOW THE SYMBOLS IN ORDER</p>
+        </div>
+
+        <footer class="chrome-bottom">
+          <p id="route-id" class="route-id">ROUTE ID: AR-000</p>
+          <button type="button" id="new-mission" class="hard-button hard-button-small">NEW MISSION</button>
+          <p class="unit-id unit-id-footer">HR-04</p>
+        </footer>
+
+        <button type="button" id="verify-code" class="verify-trigger">VERIFY CODE</button>
+
+        <aside id="verify-drawer" class="verify-drawer" aria-hidden="true">
+          <div class="verify-head">
+            <p class="verify-label">CURRENT ROUTE</p>
+            <button type="button" id="verify-close" class="hard-button hard-button-small">CLOSE</button>
+          </div>
+          <div id="verify-route" class="verify-route"></div>
+          <p class="verify-label">VERIFIED CODE</p>
+          <p id="verify-code-value" class="verify-code"></p>
+        </aside>
+      </section>
+
+      <div id="admin-hotspot" class="admin-hotspot" aria-hidden="true"></div>
+
+      <aside id="admin" class="admin" hidden>
+        <p class="admin-kicker">MAINTENANCE</p>
+        <h2 class="admin-title">ADMIN PANEL</h2>
+
+        <div class="admin-block">
+          <p class="admin-label">MISSION LENGTH</p>
+          <div class="admin-toggle" role="group" aria-label="Mission length">
+            <button type="button" id="len-3" data-length="3">3 CLUES</button>
+            <button type="button" id="len-4" data-length="4" aria-pressed="true">4 CLUES</button>
+          </div>
+          <p id="length-note" class="admin-note">APPLIES ON NEXT MISSION</p>
+        </div>
+
+        <button type="button" id="admin-generate" class="hard-button admin-button">GENERATE NEW MISSION</button>
+        <button type="button" id="admin-reset" class="hard-button admin-button">RESET ROUTE COUNTER</button>
+        <button type="button" id="admin-fullscreen" class="hard-button admin-button">FULLSCREEN</button>
+        <button type="button" id="admin-close" class="hard-button admin-button">CLOSE ADMIN PANEL</button>
+        <p id="admin-status" class="admin-note" role="status"></p>
+      </aside>
+
+      <div class="overlay scanlines" aria-hidden="true"></div>
+      <div class="overlay vignette" aria-hidden="true"></div>
+      <div class="overlay tint" aria-hidden="true"></div>
+      <svg class="overlay noise" aria-hidden="true">
+        <filter id="noise-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise-filter)"></rect>
+      </svg>
+      <div class="routing-flash" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
